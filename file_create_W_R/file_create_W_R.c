@@ -1,3 +1,7 @@
+/*
+Homework : 創建一個檔案，把資料寫入檔案後關閉，再將檔案開啟，讀取內容並顯示出來，預設檔案為不存在
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

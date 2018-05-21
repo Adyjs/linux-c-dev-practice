@@ -1,3 +1,7 @@
+/*homework2 : 
+ 在 /root 下創建一個資料夾，在這個資料夾下面創建幾個檔案，然後再刪除掉
+ */
+
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
