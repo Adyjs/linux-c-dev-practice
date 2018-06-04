@@ -7,9 +7,7 @@
 
 
 void input(FILE *filepath , char *buf){
-	//int count = 0;
 	fwrite(buf , sizeof(char) , strlen(buf) , filepath);
-	//count++;
 }
 
 void IPv4_generate(char *buf){
@@ -42,7 +40,6 @@ int main(int argc , char *argv[]){
 	for(int i=0 ; i<num ; i++){
 		IPv4_generate(buf);
 		input(newfile , buf);
-		//printf("%s\n" , buf);
 	}
 	fclose(newfile);
 	return 0;

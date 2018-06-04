@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define BUFSIZE 4096
+#define BUFSIZE 20480
 
 void output(FILE *dest, int line , char **arrIP){
 	for(int i=0 ; i<line ; i++){
@@ -85,16 +85,13 @@ int main(int argc , char *argv[]){
 	/*read content of raw_file and store it into buf*/
 	char *buf = malloc(BUFSIZE * sizeof(char));
 	size_t read_num;
+	char ** arrIP;
 	int *line = malloc(sizeof(int));
 	*line = 0;
 	while( (read_num = fread(buf , sizeof(char) , BUFSIZE , raw_file)) != 0 ){
-		//printf("num : %d , buf : %d\n" , read_num , sizeof(buf));
-		char ** arrIP = analysis(buf , read_num , line);
-		output(new_file , *line , arrIP);
-		/*write the content of buf*/
-		//fwrite(buf , sizeof(char) , read_num, new_file);
-		//memset(buf , '\0' , strlen(buf));
+		arrIP = analysis(buf , read_num , line);
 	}
+	output(new_file , *line , arrIP);
 	printf("line : %d\n" , *line);
 	fclose(new_file);
 	fclose(raw_file);
