@@ -88,9 +88,8 @@ int main(int argc , char *argv[]){
 	char ** arrIP;
 	int *line = malloc(sizeof(int));
 	*line = 0;
-	while( (read_num = fread(buf , sizeof(char) , BUFSIZE , raw_file)) != 0 ){
-		arrIP = analysis(buf , read_num , line);
-	}
+	read_num = fread(buf , sizeof(char) , BUFSIZE , raw_file);
+	arrIP = analysis(buf , read_num , line);
 	output(new_file , *line , arrIP);
 	printf("line : %d\n" , *line);
 	fclose(new_file);
