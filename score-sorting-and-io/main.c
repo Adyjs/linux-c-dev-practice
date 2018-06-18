@@ -106,18 +106,13 @@ void format_buf_malloc(char *format_buf[]){
 		if( !format_buf[i]){
 			exit(1);
 		}
-		// sprintf(format_buf[i] , "this is line %d" , i);
 	}
-	// for(int j=0 ; j<FORMAT_BUF ; j++){
-	// 	printf("%s\n" , format_buf[j]);
-	// }
 	return;
 }
 
 int extract_sum_item(char *line_str){
 	int sum = 0;
 	sscanf( line_str , "%*s %*s %*s %*d %*d %*d %*d %*d %*d %d" , &sum);
-	//printf("sum : %d\n" , sum);
 	return sum;
 }
 
@@ -162,9 +157,6 @@ void add_total_item_and_sum(char *line_buf[] , int line_num){
 			strcat(line_buf[i] , " Total");
 		}
 	}
-	// for(int i=0 ; i<line_num ; i++){
-	// 	printf("%s\n" , line_buf[i]);
-	// }
 }
 
 void break_line(char *data , char *line_buf[] , int line_num){
@@ -174,7 +166,6 @@ void break_line(char *data , char *line_buf[] , int line_num){
 	int count = 0;
 	for(int i=0 ; i<data_length ; i++){
 		if(data[i] == '\n'){
-			//str_temp[str_temp_count++] = data[i];
 			str_temp[str_temp_count] = '\0';
 			strcpy(line_buf[count++] , str_temp);
 			memset(str_temp , sizeof(char) , strlen(str_temp));
@@ -196,7 +187,6 @@ void line_buf_malloc(char *line_buf[] , int line_num){
 		if(!line_buf){
 			exit(1);
 		}
-		//sprintf(temp , "this is line %d\n" , i);
 		strcpy(line_buf[i] , temp);
 		memset(temp , sizeof(char) , strlen(temp));
 	}
@@ -212,8 +202,6 @@ int get_line_num(char *data){
 		}
 	}
 	count++;
-	//printf("total %d lines\n" , count);
-	/*the last line without '\n' ,  so we need to add 1 for the last line*/
 	return count;
 }
 
