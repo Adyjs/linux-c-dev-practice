@@ -18,7 +18,6 @@ void sorting_with_sum(char ** , int);
 void format_buf_malloc(char **);
 void format_break_and_concat(char **, char ** , int);
 int extract_sum_item(char *line_str);
-
 void output_file(FILE * , char **);
 
 int main(){
@@ -31,28 +30,34 @@ int main(){
 	FILE *new = fopen("sorted_score.txt" , "w+");
 	FILE *raw = fopen("score_ANSI.txt" , "r");
 	fread(data , sizeof(char) , READ_DATA_BUF_SIZE , raw);
+
+	/*計算原始成績表有幾行*/
 	line_num = get_line_num(data);
+
+	/*以行數來宣告及 malloc char *陣列 */
 	line_buf_malloc(line_buf , line_num);
+
+	/*把每一行設定給對應 line_buf[ index ] 中的 char * 指標*/
 	break_line(data , line_buf , line_num);
+
+	/*計算每一行的科目分數總分，並加上一個項目 Total*/
 	add_total_item_and_sum(line_buf , line_num);
+
+	/*每一行以 qsort 來比較 Total 總分的大小，並作排序，從大排到小*/
 	sorting_with_sum(line_buf , line_num);
 
-
-
+	/*新格式的 char * 指標陣列 malloc */
 	format_buf_malloc(format_buf);
+
+	/*將原排序好的資料轉換成新格式*/
 	format_break_and_concat(format_buf , line_buf , line_num);
-	//add_total_item(format_buf);
 
-
+	/*將新格式資料輸出到 sorted_score.txt 檔案中*/
 	output_file(new , format_buf);
 
 	fclose(new);
+	fclose(raw);
 	//display(read_data);
-
-
-	// for(int i=0 ; i<line_num ; i++){
-	// 	printf("%s\n" , line_buf[i]);
-	// }
 }
 
 
@@ -91,7 +96,7 @@ void format_break_and_concat(char *format_buf[] , char *line_buf[] , int line_nu
 	for(int i=0 ; i<FORMAT_BUF ; i++){
 		strcat(format_buf[i] , "\n");
 	}
-
+	free(line_buf);
 }
 
 
