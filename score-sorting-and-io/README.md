@@ -1,5 +1,20 @@
 # score sorting and io
 
+
+```
+$ git clone https://github.com/Adyjs/linux-c-dev-practice/tree/master/score-sorting-and-io
+
+then , build code with gcc on windows , need to install mingw
+after install mingw , open the windows cli
+
+$ gcc -g -Wall -o run main.c && run
+
+if everything OK , 
+you will see a sorted_score.txt created in the score-sorting-and-io directory 
+
+
+```
+
 本題寫法大略如下
 
 1. 讀入資料後，逐字檢查 '\n' 來計算有幾行
