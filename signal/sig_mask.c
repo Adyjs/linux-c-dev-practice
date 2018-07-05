@@ -13,14 +13,14 @@ int main(){
 
 	sigset_t origin , block;
 
-	printf("\nmask set , SIGINT will be block in 5 sec\n");
+	printf("\nmask set , SIGINT has been blocking for 5 seconds from now\n");
 	sigemptyset(&block);
 	sigaddset(&block , SIGINT);
 	sigprocmask(SIG_BLOCK , &block , &origin);
 	
 	sleep(5);
 	
-	printf("\nmask reset , SIGINT is been unblocked\n");
+	printf("\nmask reset , SIGINT has been unblocking now.\n");
 	sigprocmask(SIG_SETMASK , &origin , NULL);
 	
 	for(;;){}
